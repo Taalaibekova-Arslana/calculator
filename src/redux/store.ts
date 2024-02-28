@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { dataReducer } from "./tools/colSlice";
+import { dataReducer } from "./tools/calculatorSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
-	reducer: dataReducer,
+	reducer: {
+		dataReducer: dataReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type UseDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
